@@ -1,6 +1,6 @@
 <?php
 
-class cgui extends GtkWindow {
+class cgui {
 
 /*	public function __construct() {
 		//parent::__construct();
@@ -28,7 +28,7 @@ class cgui extends GtkWindow {
 //	}
 //	public function button(){
 		$button= new GtkButton("1",false);
-		$win->add($button);
+		$box->add($button);
 		$win->show_all();
 		
 		//statements
