@@ -82,9 +82,9 @@ class cgui {
 		//$btnequal->set_size_request(50,60);
 		$btnt2->set_label('^2');
 		$btnsin->set_label('sin');
-		$btnsin->set_label('cos');
-		$btnsin->set_label('tan');
-		$btnsin->set_label('cot');
+		$btncos->set_label('cos');
+		$btntan->set_label('tan');
+		$btncot->set_label('cot');
 		//$btnref->set_size_request(50,60);
 		//$btnback->set_size_request(50,60);
 
