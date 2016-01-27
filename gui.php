@@ -10,26 +10,12 @@ class cgui {
 		$win->set_default_size(350,350);
 		$win->connect_simple('destroy',array('quit','main_quit'));
 
-		//create horizontal box
-//		$hbox0 = new GtkHBox();
-		$hbox1 = new GtkHBox();
-		$hbox2 = new GtkHBox();
-		$hbox3 = new GtkHBox();
-		$hbox4 = new GtkHBox();
-//		$hbox5 = new GtkHBox();
-//		$hbox6 = new GtkHBox();
-
+		//create vbox
 		$vbox = new GtkVBox();
-		//create vertical box
-		/*$vbox1 = new GtkVBox();
-		$vbox2 = new GtkVBox();
-		$vbox3 = new GtkVBox();
-		$vbox4 = new GtkVBox();
-		$vbox5 = new GtkVBox();
-		$vbox6 = new GtkVBox();
-*/
-		$entry = new GtkEntry();
 
+		//create entry box
+		$entry = new GtkEntry();
+		$entry->set_size_request(100,100);
 
 		//create button
 		$btn1 = new GtkButton();
@@ -57,10 +43,8 @@ class cgui {
 		$btnequal = new GtkButton();
 		$btnref = GtkButton::new_from_stock(Gtk::STOCK_REFRESH);
 		$btnback = GtkButton::new_from_stock(Gtk::STOCK_CLEAR);
-
 		//set button value
 		$btn1->set_label('1');
-		//$btn1->set_size_request(10,80);
 		$btn2->set_label('2');
 		$btn3->set_label('3');
 		$btn4->set_label('4');
@@ -70,87 +54,54 @@ class cgui {
 		$btn8->set_label('8');
 		$btn9->set_label('9');
 		$btn0->set_label('0');
-		//$btn0->set_size_request(20,80);
 		$btndot->set_label('.');
 		$btnpercent->set_label('%');
 		$btnplus->set_label('+');
-		//$btnplus->set_size_request(50,60);
 		$btnminus->set_label('-');
 		$btndiv->set_label('/');
 		$btnmulti->set_label('*');
 		$btnequal->set_label('=');
-		//$btnequal->set_size_request(50,60);
 		$btnt2->set_label('^2');
+		$btnrad->set_label('v--');
 		$btnsin->set_label('sin');
 		$btncos->set_label('cos');
 		$btntan->set_label('tan');
 		$btncot->set_label('cot');
-		//$btnref->set_size_request(50,60);
-		//$btnback->set_size_request(50,60);
 
-
-		//add button in vbox
-		$hbox1->pack_start($btn7,true,true);
-		$hbox1->pack_start($btn8,true,true);
-		$hbox1->pack_start($btn9,true,true);
-		$hbox1->pack_start($btnmulti,true,true);
-		$hbox1->pack_start($btnref,true,true);
-		$hbox1->pack_start($btnback,true,true);
-		$hbox2->pack_start($btn4,true,true);
-		$hbox2->pack_start($btn5,true,true);
-		$hbox2->pack_start($btn6,true,true);
-		$hbox2->pack_start($btndiv,true,true);
-		$hbox2->pack_start($btnt2,true,true);
-		$hbox2->pack_start($btnpercent,true,true);
-		$hbox3->pack_start($btn1,true,true);
-		$hbox3->pack_start($btn2,true,true);
-		$hbox3->pack_start($btn3,true,true);
-		$hbox3->pack_start($btnminus,true,true);
-		$hbox3->pack_start($btnsin,true,true);
-		$hbox3->pack_start($btncos,true,true);
-		//$hbox3->pack_start($btn,true,true);
-		$hbox4->pack_start($btn0,true,true);
-		$hbox4->pack_start($btndot,true,true);
-		$hbox4->pack_start($btnequal,true,true);
-		$hbox4->pack_start($btnplus,true,true);
-		$hbox4->pack_start($btntan,true,true);
-		$hbox4->pack_start($btncot,true,true);
-
-		$vbox->pack_start($entry,false,false,0);
-		//add vbox in hbox
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox4,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox3,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox2,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		$vbox->pack_end($hbox1,true,true);
-		//$vbox->pack_end($hbox5,true,true);
-		//$vbox->pack_end($hbox6,true,true);
-		//$hbox0->pack_start($entry,true);
-
-
-		//add hbox in window
-		//$win->add($hbox0);
+		//create table
+		$tbl = new GtkTable(4,6,true);
+		//set button on table
+		$tbl->attach($btn7,0,1,0,1);
+		$tbl->attach($btn8,1,2,0,1);
+		$tbl->attach($btn9,2,3,0,1);
+		$tbl->attach($btnmulti,3,4,0,1);
+		$tbl->attach($btnref,4,5,0,1);
+		$tbl->attach($btnback,5,6,0,1);
+		$tbl->attach($btn4,0,1,1,2);
+		$tbl->attach($btn5,1,2,1,2);
+		$tbl->attach($btn6,2,3,1,2);
+		$tbl->attach($btndiv,3,4,1,2);
+		$tbl->attach($btnrad,4,5,1,2);
+		$tbl->attach($btnt2,5,6,1,2);
+		$tbl->attach($btn1,0,1,2,3);
+		$tbl->attach($btn2,1,2,2,3);
+		$tbl->attach($btn3,2,3,2,3);
+		$tbl->attach($btnminus,3,4,2,3);
+		$tbl->attach($btnsin,4,5,2,3);
+		$tbl->attach($btncos,5,6,2,3);
+		$tbl->attach($btn0,0,1,3,4);
+		$tbl->attach($btndot,1,2,3,4);
+		$tbl->attach($btnequal,2,3,3,4);
+		$tbl->attach($btnplus,3,4,3,4);
+		$tbl->attach($btntan,4,5,3,4);
+		$tbl->attach($btncot,5,6,3,4);
+		//add to vbox
+		$vbox->pack_start($entry,true,true,0);
+		$vbox->pack_end($tbl,true,true,0);
+		//add to window
 		$win->add($vbox);
 		$win->show_all();
+
 		
 		
 	}
