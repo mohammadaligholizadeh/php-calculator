@@ -1,21 +1,26 @@
 <?php
 
-class cgui {
+class cgui extends GtkWindow {
 
-	public function window() {
+	private $entry;
 
+	public function __construct() { 
+		parent::__construct(); 
+		$this->window();
+  	}
+
+	private function window() {
 		//create window
-		$win = new GtkWindow();
-		$win->set_title("calculator GUI");
-		$win->set_default_size(350,350);
-		$win->connect_simple('destroy',array('quit','main_quit'));
+		$this->set_title("calculator GUI");
+		$this->set_default_size(350,350);
+		$this->connect_simple('destroy',array('gtk','main_quit'));
 
 		//create vbox
 		$vbox = new GtkVBox();
 
 		//create entry box
-		$entry = new GtkEntry();
-		$entry->set_size_request(100,100);
+		$this->entry = new GtkEntry();
+		$this->entry->set_size_request(100,100);
 
 		//create button
 		$btn1 = new GtkButton();
@@ -45,15 +50,25 @@ class cgui {
 		$btnback = GtkButton::new_from_stock(Gtk::STOCK_CLEAR);
 		//set button value
 		$btn1->set_label('1');
+		$btn1->connect('clicked',array($this,'click1'));
 		$btn2->set_label('2');
+		$btn2->connect('clicked',array($this,'click2'));
 		$btn3->set_label('3');
+		$btn3->connect('clicked',array($this,'click3'));
 		$btn4->set_label('4');
+		$btn4->connect('clicked',array($this,'click4'));
 		$btn5->set_label('5');
+		$btn5->connect('clicked',array($this,'click5'));
 		$btn6->set_label('6');
+		$btn6->connect('clicked',array($this,'click6'));
 		$btn7->set_label('7');
+		$btn7->connect('clicked',array($this,'click7'));
 		$btn8->set_label('8');
+		$btn8->connect('clicked',array($this,'click8'));
 		$btn9->set_label('9');
+		$btn9->connect('clicked',array($this,'click9'));
 		$btn0->set_label('0');
+		$btn0->connect('clicked',array($this,'click0'));
 		$btndot->set_label('.');
 		$btnpercent->set_label('%');
 		$btnplus->set_label('+');
@@ -96,19 +111,49 @@ class cgui {
 		$tbl->attach($btntan,4,5,3,4);
 		$tbl->attach($btncot,5,6,3,4);
 		//add to vbox
-		$vbox->pack_start($entry,true,true,0);
+		$vbox->pack_start($this->entry,true,true,0);
 		$vbox->pack_end($tbl,true,true,0);
 		//add to window
-		$win->add($vbox);
-		$win->show_all();
+		$this->add($vbox);
+		$this->show_all();
 
 		
 		
 	}
-
+	public function click1() {
+			$this->entry->set_text(1);
+		}
+	public function click2() {
+			$this->entry->set_text(2);
+		}
+	public function click3() {
+			$this->entry->set_text(3);
+		}
+	public function click4() {
+			$this->entry->set_text(4);
+		}
+	public function click5() {
+			$this->entry->set_text(5);
+		}
+	public function click6() {
+			$this->entry->set_text(6);
+		}
+	public function click7() {
+			$this->entry->set_text(7);
+		}
+	public function click8() {
+			$this->entry->set_text(8);
+		}
+	public function click9() {
+			$this->entry->set_text(9);
+		}
+	public function click0() {
+			$this->entry->set_text(0);
+		}
 }
-$run = new cgui();
-$run->window();
+new cgui();
+//$run->window();
+//$win->show_all();
 GTK::main();
 
 ?>
