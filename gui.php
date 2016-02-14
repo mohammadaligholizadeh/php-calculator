@@ -70,18 +70,31 @@ class cgui extends GtkWindow {
 		$btn0->set_label('0');
 		$btn0->connect('clicked',array($this,'click0'));
 		$btndot->set_label('.');
+		$btndot->connect('clicked',array($this,'clickdot'));
 		$btnpercent->set_label('%');
+		$btnpercent->connect('clicked',array($this,'clickpercent'));
 		$btnplus->set_label('+');
+		$btnplus->connect('clicked',array($this,'clickplus'));
 		$btnminus->set_label('-');
+		$btnminus->connect('clicked',array($this,'clickminus'));
 		$btndiv->set_label('/');
+		$btndiv->connect('clicked',array($this,'clickdiv'));
 		$btnmulti->set_label('*');
+		$btnmulti->connect('clicked',array($this,'clickmulti'));
 		$btnequal->set_label('=');
+		$btnequal->connect('clicked',array($this,'clickequal'));
 		$btnt2->set_label('^2');
-		$btnrad->set_label('v--');
+		//$btnt2->connect('clicked',array($this,'clickt2'));
+		//$btnrad->set_label('v--');
+		$btnrad->connect('clicked',array($this,'clickrad'));
 		$btnsin->set_label('sin');
+		$btnsin->connect('clicked',array($this,'clicksin'));
 		$btncos->set_label('cos');
+		$btncos->connect('clicked',array($this,'clickcos'));
 		$btntan->set_label('tan');
+		$btntan->connect('clicked',array($this,'clicktan'));
 		$btncot->set_label('cot');
+		$btncot->connect('clicked',array($this,'clickcot'));
 
 		//create table
 		$tbl = new GtkTable(4,6,true);
@@ -96,7 +109,7 @@ class cgui extends GtkWindow {
 		$tbl->attach($btn5,1,2,1,2);
 		$tbl->attach($btn6,2,3,1,2);
 		$tbl->attach($btndiv,3,4,1,2);
-		$tbl->attach($btnrad,4,5,1,2);
+		$tbl->attach($btnpercent,4,5,1,2);
 		$tbl->attach($btnt2,5,6,1,2);
 		$tbl->attach($btn1,0,1,2,3);
 		$tbl->attach($btn2,1,2,2,3);
