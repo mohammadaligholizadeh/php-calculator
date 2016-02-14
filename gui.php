@@ -165,8 +165,6 @@ class cgui extends GtkWindow {
 		}
 }
 new cgui();
-//$run->window();
-//$win->show_all();
 GTK::main();
 
 ?>
